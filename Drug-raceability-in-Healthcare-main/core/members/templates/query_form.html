@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #f9d976, #f39f86);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555555;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            resize: vertical;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #333333;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #f39f86;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: #f39f86;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease-in-out;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: #e68a74;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter SQL Query</h1>
+        <form method="post" action="{% url 'query_results' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="query">Enter your SQL query:</label>
+                <textarea id="query" name="query" rows="6"></textarea>
+            </div>
+            <button type="submit">Run Query</button>
+        </form>
+    </div>
+</body>
+</html>

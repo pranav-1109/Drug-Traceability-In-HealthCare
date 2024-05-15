@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #333333, #1c1c1c);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            justify-items: center;
+            max-width: 800px;
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #ff6b6b, #ff4242);
+            opacity: 0.2;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 0.4;
+        }
+
+        .card.card2::before {
+            background: linear-gradient(to bottom right, #48dbfb, #1e90ff);
+        }
+
+        .card.card3::before {
+            background: linear-gradient(to bottom right, #ffd700, #ffa500);
+        }
+
+        .card.card4::before {
+            background: linear-gradient(to bottom right, #7cfc00, #008000);
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #cccccc;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Control Panel</h1>
+    </div>
+    <div class="container">
+        <div class="card card1" onclick="redirectTo('/list_reports')">
+            <h2>List Reports</h2>
+            <p>View all the issues reported by users.</p>
+        </div>
+        <div class="card card2" onclick="redirectTo('/query_form')">
+            <h2>Analyze Data</h2>
+            <p>Run SQL Queries to Analyze data.</p>
+        </div>
+        <div class="card card3" onclick="redirectTo('/fake_medicine_charts')">
+            <h2>View Statistics</h2>
+            <p>View live statistics.</p>
+        </div>
+        <div class="card card4" onclick="redirectTo('/admin')">
+            <h2>Django Admin Site</h2>
+            <p>Click here to view and modify database.</p>
+        </div>
+    </div>
+    <script>
+        function redirectTo(route) {
+            // Simulate redirection
+            console.log("Redirecting to: " + route);
+            // Replace 'route' with the actual URL you want to redirect to
+            window.location.href = route;
+        }
+    </script>
+</body>
+</html>

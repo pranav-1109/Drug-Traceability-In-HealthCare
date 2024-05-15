@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Upload</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7aff70, #735eff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(50px);
+            z-index: -1;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(50px);
+            z-index: -1;
+        }
+
+        h1 {
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #ff6b6b;
+            border-radius: 2px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: 600;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 10px 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+            background-color: #f7f7f7;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #ff6b6b;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff4242;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Barcode Image</h1>
+        <form method="post" action="{% url 'barcode_upload' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="barcode_image">Upload Barcode Image:</label>
+            <input type="file" id="barcode_image" name="barcode_image" accept="image/*" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

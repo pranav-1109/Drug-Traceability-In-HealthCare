@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake Medicine Charts</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #f5f5f5;
+    }
+
+    
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Chart Container Styles */
+    .chart-container {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      position: relative; /* Added for responsive sizing */
+    }
+
+    .chart-title {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    /* Responsive Chart Sizing (CSS Media Query) */
+    @media (max-width: 768px) {
+      .chart-container {
+        height: 300px; /* Adjust height as needed */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fake Medicine Charts</h1>
+
+    <div id="company-chart"></div>
+    <div id="medicine-chart"></div>
+    
+  </div>
+
+  <script>
+    // Access chart data from Django template variables
+    var company_chart_div = "{{ company_chart|safe }}";
+    var medicine_chart_div = "{{ medicine_chart|safe }}";
+
+    // Parse JSON data before setting chart content
+    var company_chart_data = JSON.parse(company_chart_div);
+    var medicine_chart_data = JSON.parse(medicine_chart_div);
+
+    // Get chart elements
+    var company_chart_element = document.getElementById('company-chart');
+    var medicine_chart_element = document.getElementById('medicine-chart');
+
+    // Use Plotly to create charts (replace with your actual chart creation code)
+    Plotly.newPlot(company_chart_element, company_chart_data);
+    Plotly.newPlot(medicine_chart_element, medicine_chart_data);
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Verification</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #f9d976, #f39f86);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f39f86;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 14px;
+            background-color: #f39f86;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease-in-out;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group button:hover {
+            background-color: #e68a74;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Medicine Data</h1>
+        <form method="post" action="{% url 'verify_medicine_pharmacy' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="batch_no">Batch No</label>
+                <input type="text" id="batch_no" name="batch_no" placeholder="Enter Batch No" required>
+            </div>
+
+            <div class="form-group">
+                <label for="manufacturer">Manufacturer</label>
+                <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter Manufacturer Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="supplier">Supplier</label>
+                <input type="text" id="supplier" name="supplier" placeholder="Enter Supplier Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="medicine_name">Medicine Name</label>
+                <select id="medicine_name" name="medicine_name" required>
+                    <option value="" disabled selected>Select Medicine Name</option>
+                    <option value="Paracetemol">Paracetemol</option>
+                    <option value="Aspirin">Aspirin</option>
+                    <option value="Amlopidine">Amlopidine</option>
+                    <option value="Lisinopril">Lisinopril</option>
+                    <option value="Omeprazole">Omeprazole</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="expiry">Expiry Date</label>
+                <input type="date" id="expiry" name="expiry" placeholder="Enter Expiry Date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="camount">Percentage of Carbon</label>
+                <input type="number" id="camount" name="camount" placeholder="Enter Percentage of Carbon" min="0" max="100" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hamount">Percentage of Hydrogen</label>
+                <input type="number" id="hamount" name="hamount" placeholder="Enter Percentage of Hydrogen" min="0" max="100" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="namount">Percentage of Nitrogen</label>
+                <input type="number" id="namount" name="namount" placeholder="Enter Percentage of Nitrogen" min="0" max="100" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="oamount">Percentage of Oxygen</label>
+                <input type="number" id="oamount" name="oamount" placeholder="Enter Percentage of Oxygen" min="0" max="100" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Submit Data</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

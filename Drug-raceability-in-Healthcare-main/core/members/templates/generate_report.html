@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #a8e063, #56ab2f);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            color: #333;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #56ab2f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #499e2c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Report Issue</h1>
+        <form method="post" action="{% url 'generate_report' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="issue">Issue Faced:</label>
+                <input type="text" id="issue" name="issue">
+            </div>
+            <div class="form-group">
+                <label for="manufacturer">Manufacturer Name:</label>
+                <input type="text" id="manufacturer" name="manufacturer">
+            </div>
+            <div class="form-group">
+                <label for="medicine_details">Medicine Details:</label>
+                <input type="text" id="medicine_details" name="medicine_details">
+            </div>
+            <button type="submit">Report Issue</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Test Status</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7aff70, #735eff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #ff6b6b;
+            border-radius: 2px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: 600;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #ff6b6b;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff4242;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Check Test Status</h1>
+        <form method="post" action="{% url 'check_test_status' %}">
+            {% csrf_token %}
+            <label for="batch_no">Enter Batch No:</label>
+            <input type="text" id="batch_no" name="batch_no" required>
+            <button type="submit">Check Status</button>
+        </form>
+    </div>
+</body>
+</html>

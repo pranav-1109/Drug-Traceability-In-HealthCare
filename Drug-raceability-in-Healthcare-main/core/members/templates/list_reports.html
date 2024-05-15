@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Reports</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #333333, #1c1c1c);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .no-reports {
+            text-align: center;
+            font-style: italic;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Reports</h1>
+        <ul>
+            {% for report in reports %}
+            <li><a href="{% url 'download_report' report %}">{{ report }}</a></li>
+            {% empty %}
+            <li class="no-reports">No reports available</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

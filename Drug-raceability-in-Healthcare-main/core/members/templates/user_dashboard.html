@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #f9d976, #f39f86);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #fff;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .card {
+            width: 280px;
+            height: 280px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #ff6b6b, #ff4242);
+            opacity: 0.2;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 0.4;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Add spacing between rows */
+        .row-spacing {
+            margin-top: 40px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .card {
+                width: 80%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Choose a way to test your Medicines.</h1>
+    </div>
+    <div class="container">
+        <div class="card card1" onclick="redirectTo('/check_test_status')">
+            <h2>Enter ID Manually</h2>
+            <p>Enter your ID manually to proceed.</p>
+        </div>
+        <div class="card card2" onclick="redirectTo('/barcode_upload')">
+            <h2>Upload Barcode</h2>
+            <p>Upload a barcode image to proceed.</p>
+        </div>
+    </div>
+    <div class="container row-spacing"> <!-- Add spacing between rows -->
+        <div class="card card3" onclick="redirectTo('/fake_medicine_charts')">
+            <h2>General Data</h2>
+            <p>View Information about Medicines Globally.</p>
+        </div>
+        <div class="card card4" onclick="redirectTo('/upload_image')">
+            <h2>Upload Logo</h2>
+            <p>Upload an image of a logo to verify Medicine.</p>
+        </div>
+    </div>
+    <script>
+        function redirectTo(route) {
+            // Simulate redirection
+            console.log("Redirecting to: " + route);
+            // Replace 'route' with the actual URL you want to redirect to
+            window.location.href = route;
+        }
+    </script>
+</body>
+</html>

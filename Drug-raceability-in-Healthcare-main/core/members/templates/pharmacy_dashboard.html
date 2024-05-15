@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #f9d976, #f39f86);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #fff;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #ff6b6b, #ff4242);
+            opacity: 0.2;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 0.4;
+        }
+
+        .card.card2::before {
+            background: linear-gradient(to bottom right, #48dbfb, #1e90ff);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Choose a way to test your Medicines</h1>
+    </div>
+    <div class="container">
+        <div class="card card1" onclick="redirectTo('/pharmacy_data_entry')">
+            <h2>Verify Medicine</h2>
+            <p>Enter Medicine details to proceed.</p>
+        </div>
+        <div class="card card2" onclick="redirectTo('/generate_report')">
+            <h2>Report Issue with Medicine</h2>
+            <p>Enter Medicine details.</p>
+        </div>
+    </div>
+    <script>
+        function redirectTo(route) {
+            // Simulate redirection
+            console.log("Redirecting to: " + route);
+            // Replace 'route' with the actual URL you want to redirect to
+            window.location.href = route;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<main id="content">
+    <h2>Home Page</h2>
+    <p>Home page content goes here.</p>
+    <button onclick="printContent()">Print</button>
+    <ul>
+    {% for member in members %}
+        <li>{{ member.name }}</li>
+    {% empty %}
+        <li>No members found.</li>
+    {% endfor %}
+    </ul>
+
+    <script>
+        function printContent() {
+                var content = document.getElementById("content").innerHTML;
+                var printWindow = window.open('', '', 'width=600,height=600');
+                printWindow.document.open();
+                printWindow.document.write('<html><head><title>Print</title></head><body>' + content + '</body></html>');
+                printWindow.document.close();
+                printWindow.print();
+            }
+        
+    </script>
+</main>
